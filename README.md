@@ -1,14 +1,14 @@
 
 # Reactive Bank
 
-Support Event Driven Architecture
+Event Driven Architecture
 
 ## Prepared Enviroment
 
 1- Download Tools https://quarkus.io/get-started/
 
 * VSCode from https://code.visualstudio.com/Download
-* JDK    from https://adoptopenjdk.net/ ( Download for macOS x64 - Version OpenJDK 8 JVM - Open J9 )
+* JDK    from https://adoptopenjdk.net/ ( Download for macOS x64 - Java version: 11.0.8, vendor: AdoptOpenJDK  )
 * Maven from https://maven.apache.org/
 * Kafka from https://kafka.apache.org/downloads
 
@@ -16,7 +16,7 @@ Support Event Driven Architecture
 
 ```shell
 $ cd $HOME/toolset
-$ unzip apache-maven-3.6.2-bin.zip
+$ unzip apache-maven-3.6.3-bin.zip
 $ tar xvfz kafka_2.12-2.3.0.tar.gz  
 ```
 Note : Java was installed using .dmg file
