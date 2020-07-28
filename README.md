@@ -43,16 +43,19 @@ $ kafka-server-start.sh $KAFKA_CONFIG/server.properties
 ```
 Note:  open different terminal for each process 
 
-3. Download Code & Run  
+
+## Architecture  
+
+1. Reactive App - Websocket + Vertx + Kafka 
 
 ```shell
 $ cd $HOME
-$ git clone  https://github.com/afuentes/realtimebusiness.git
-$ cd  realtimebusiness/kafka-quickstart
-$ mvn compile quarkus:dev
+$ mvn io.quarkus:quarkus-maven-plugin:1.6.1.Final:create \
+  -DprojectGroupId=demo.reactive.bank  \
+  -DprojectArtifactId=websocket-vertx-kafka \
+  -Dextensions="vertx"
+$ cd websocket-vertx-kafka  
 ```
-
-## Architecture  
 
 4. Comming Soon ... 
 
