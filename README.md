@@ -59,7 +59,7 @@ $ mvn compile quarkus:dev
 ### Reference
 
 * https://kafka.apache.org/
-* https://quarkus.io/get-started/ 
+* https://quarkus.io/guides/getting-started-reactive
 * https://quarkus.io/guides
 * https://quarkus.io/guides/kafka-guide
 
