@@ -23,7 +23,7 @@ public class WebSocketServer extends AbstractVerticle {
       .webSocketHandler(this::handleWebSocket)
       .listen(8080, "localhost");
 
-      logger.debug("Started server");
+      logger.info("Started server");
       
   }
 
