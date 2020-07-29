@@ -7,12 +7,8 @@ import io.vertx.core.http.ServerWebSocket;
 import io.vertx.ext.web.Router;
 import io.vertx.core.json.JsonObject;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class WebSocketServer extends AbstractVerticle {
-
-  private static final Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
 
   @Override
   public void start() {
@@ -22,8 +18,6 @@ public class WebSocketServer extends AbstractVerticle {
       .requestHandler(router)
       .webSocketHandler(this::handleWebSocket)
       .listen(8080, "localhost");
-
-      logger.info("Started server");
       
   }
 
