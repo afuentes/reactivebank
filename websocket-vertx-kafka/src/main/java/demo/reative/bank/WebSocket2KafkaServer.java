@@ -35,13 +35,9 @@ public class WebSocket2KafkaServer extends AbstractVerticle {
 
     webSocket.endHandler(ended -> {
       logger.info("Producer WebSocket closed from {}", webSocket.remoteAddress().host());
-      eventBus.send(Main.PERIODIC_PRODUCER_ADDRESS, new JsonObject().put(ACTION, STOP_ACTION));
-      consumer.unregister();
     });
     webSocket.exceptionHandler(err -> {
       logger.error("Producer WebSocket error", err);
-      eventBus.send(Main.PERIODIC_PRODUCER_ADDRESS, new JsonObject().put(ACTION, STOP_ACTION));
-      consumer.unregister();
     });
 
   }
