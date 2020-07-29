@@ -29,8 +29,11 @@ public class WebSocket2KafkaServer extends AbstractVerticle {
     final EventBus eventBus = vertx.eventBus();
 
     webSocket.handler(buffer -> {
+      logger.info("WebSocket handler from {}", webSocket.remoteAddress().host());
+      logger.info("TextHandlerID WebSocket  {}", webSocket.textHandlerID());
+
       final JsonObject message = buffer.toJsonObject();
-        eventBus.send(null, message);
+         eventBus.send(webSocket.textHandlerID(), message);
     });
 
     webSocket.endHandler(ended -> {
