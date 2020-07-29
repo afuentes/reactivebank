@@ -17,11 +17,13 @@ public class WebSocket2KafkaServer extends AbstractVerticle {
   @Override
   public void start() {
       final Router router = Router.router(vertx);
-
+      logger.info("WebSocket2KafkaServer Start ....");
       vertx.createHttpServer()
       .requestHandler(router)
       .webSocketHandler(this::handleWebSocket)
       .listen(8080, "localhost");
+
+      logger.info("WebSocket2KafkaServer Started ....");
       
   }
 
