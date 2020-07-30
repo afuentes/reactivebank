@@ -10,7 +10,7 @@ import org.jboss.logging.Logger;
 @ApplicationScoped
 public class AppLifecycleBean {
 
-    private static final Logger LOGGER = Logger.getLogger("ListenerBean");
+    private static final Logger LOGGER = Logger.getLogger(AppLifecycleBean.class);
 
     void onStart(@Observes StartupEvent ev) {               
         LOGGER.info("The application is starting...");
