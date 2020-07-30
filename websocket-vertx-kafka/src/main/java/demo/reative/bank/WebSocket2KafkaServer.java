@@ -17,14 +17,14 @@ public class WebSocket2KafkaServer extends AbstractVerticle {
   @Override
   public void start() {
       final Router router = Router.router(vertx);
-      
+
       logger.info("WebSocket2KafkaServer Start ....");
       vertx.createHttpServer()
       .requestHandler(router)
       .webSocketHandler(this::handleWebSocket)
       .listen(8080, "localhost");
 
-      logger.info("WebSocket2KafkaServer Started ....");
+      logger.debug("WebSocket2KafkaServer Started ....");
       
   }
 
@@ -32,18 +32,18 @@ public class WebSocket2KafkaServer extends AbstractVerticle {
     final EventBus eventBus = vertx.eventBus();
 
     webSocket.handler(buffer -> {
-      logger.info("WebSocket handler from {}", webSocket.remoteAddress().host());
-      logger.info("TextHandlerID WebSocket  {}", webSocket.textHandlerID());
+      logger.debug("WebSocket handler from {}", webSocket.remoteAddress().host());
+      logger.debug("TextHandlerID WebSocket  {}", webSocket.textHandlerID());
 
       final JsonObject message = buffer.toJsonObject();
          eventBus.send(webSocket.textHandlerID(), message);
     });
 
     webSocket.endHandler(ended -> {
-      logger.info("Producer WebSocket closed from {}", webSocket.remoteAddress().host());
+      logger.debug("Producer WebSocket closed from {}", webSocket.remoteAddress().host());
     });
     webSocket.exceptionHandler(err -> {
-      logger.error("Producer WebSocket error", err);
+      logger.debug("Producer WebSocket error", err);
     });
 
   }
