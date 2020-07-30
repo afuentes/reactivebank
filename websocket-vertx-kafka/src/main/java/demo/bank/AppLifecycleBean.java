@@ -31,25 +31,25 @@ public class AppLifecycleBean {
         .webSocketHandler(this::handleWebSocket)
         .listen(8080, "localhost");
   
-        LOGGER.debug("WebSocket2KafkaServer Started ....");
+        LOGGER.info("WebSocket2KafkaServer Started ....");
     }
 
     private void handleWebSocket(final ServerWebSocket webSocket) {
         final EventBus eventBus = vertx.eventBus();
     
         webSocket.handler(buffer -> {
-          LOGGER.debug("WebSocket handler from ");
-          LOGGER.debug("TextHandlerID WebSocket ");
+          LOGGER.info("WebSocket handler from ");
+          LOGGER.info("TextHandlerID WebSocket ");
     
           final JsonObject message = buffer.toJsonObject();
              eventBus.send(webSocket.textHandlerID(), message);
         });
     
         webSocket.endHandler(ended -> {
-          LOGGER.debug("Producer WebSocket closed from {}");
+          LOGGER.info("Producer WebSocket closed from {}");
         });
         webSocket.exceptionHandler(err -> {
-          LOGGER.debug("Producer WebSocket error", err);
+          LOGGER.info("Producer WebSocket error", err);
         });
     
       }
