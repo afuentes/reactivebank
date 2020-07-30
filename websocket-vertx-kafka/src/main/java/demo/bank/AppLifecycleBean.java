@@ -1,4 +1,4 @@
-package demo.reative.bank;
+package demo.bank;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
@@ -10,7 +10,7 @@ import org.jboss.logging.Logger;
 @ApplicationScoped
 public class AppLifecycleBean {
 
-    private static final Logger LOGGER = Logger.getLogger(AppLifecycleBean.class);
+    private static final Logger LOGGER = Logger.getLogger("AppLifecycleBean");
 
     void onStart(@Observes StartupEvent ev) {               
         LOGGER.info("The application is starting...");
