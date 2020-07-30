@@ -2,18 +2,25 @@
 package demo.bank;
 
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.Vertx;
 import io.vertx.core.eventbus.EventBus;
 import io.vertx.core.http.ServerWebSocket;
 import io.vertx.ext.web.Router;
 import io.vertx.core.json.JsonObject;
+
+import javax.inject.Inject;
+
 import org.jboss.logging.Logger;
 
 public class WebSocket2KafkaServer extends AbstractVerticle {
 
   private static final Logger LOGGER = Logger.getLogger("WebSocket2KafkaServer");
 
+  @Inject Vertx vertx;
+
   @Override
   public void start() {
+    
       final Router router = Router.router(vertx);
 
       LOGGER.info("WebSocket2KafkaServer Start ....");
