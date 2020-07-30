@@ -10,26 +10,26 @@ import io.vertx.core.json.JsonObject;
 
 import javax.inject.Inject;
 
-import org.jboss.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class WebSocket2KafkaServer extends AbstractVerticle {
 
-  private static final Logger LOGGER = Logger.getLogger("WebSocket2KafkaServer");
+  private static final Logger logger = LoggerFactory.getLogger(WebSocket2KafkaServer.class);
 
-  @Inject Vertx vertx;
 
   @Override
   public void start() {
-    
+
       final Router router = Router.router(vertx);
 
-      LOGGER.info("WebSocket2KafkaServer Start ....");
+      logger.info("WebSocket2KafkaServer Start ....");
       vertx.createHttpServer()
       .requestHandler(router)
       .webSocketHandler(this::handleWebSocket)
       .listen(8080, "localhost");
 
-      LOGGER.debug("WebSocket2KafkaServer Started ....");
+      logger.debug("WebSocket2KafkaServer Started ....");
       
   }
 
@@ -37,18 +37,18 @@ public class WebSocket2KafkaServer extends AbstractVerticle {
     final EventBus eventBus = vertx.eventBus();
 
     webSocket.handler(buffer -> {
-      LOGGER.debug("WebSocket handler from ");
-      LOGGER.debug("TextHandlerID WebSocket ");
+      logger.debug("WebSocket handler from ");
+      logger.debug("TextHandlerID WebSocket ");
 
       final JsonObject message = buffer.toJsonObject();
          eventBus.send(webSocket.textHandlerID(), message);
     });
 
     webSocket.endHandler(ended -> {
-      LOGGER.debug("Producer WebSocket closed from {}");
+      logger.debug("Producer WebSocket closed from {}");
     });
     webSocket.exceptionHandler(err -> {
-      LOGGER.debug("Producer WebSocket error", err);
+      logger.debug("Producer WebSocket error", err);
     });
 
   }
