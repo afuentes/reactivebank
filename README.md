@@ -61,10 +61,21 @@ $ cd websocket-vertx-kafka
 
 ### Reference
 
-* https://kafka.apache.org/
+## Quarkus 
+
+* https://quarkus.io/
+
+## Websocket
+
+* https://undertow.io/
+* https://medium.com/@ccpatrut/hands-on-reactive-application-with-angular-and-quarkus-37478ad2b41e
+
+## Vertx 
+
 * https://quarkus.io/guides/vertx
-* https://quarkus.io/guides/getting-started-reactive
+
+## Kafka 
+
+* https://kafka.apache.org/
 * https://quarkus.io/guides/kafka-guide
-
-
 
