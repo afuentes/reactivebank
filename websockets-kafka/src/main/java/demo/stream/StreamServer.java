@@ -24,6 +24,7 @@ public class StreamServer {
 
     @OnOpen
     public void onOpen(Session session, @PathParam("username") String username) {
+        LOG.info("onOpen:SessionId:"+session.getId()+ ":username:"+ username);
         sessions.put(username, session);
     }
 
